@@ -9,13 +9,16 @@ import {
   ActionBiteSubCommand,
   RunActionBiteSubCommand,
   ActionSlapSubCommand,
-  RunSlapSubCommand
+  RunSlapSubCommand,
+  ActionKissSubCommand,
+  RunActionKissSubCommand
 } from "../SubCommands";
 
 const SubCommands: ApplicationCommandOptions[] = [
   ActionPatSubCommand,
   ActionBiteSubCommand,
-  ActionSlapSubCommand
+  ActionSlapSubCommand,
+  ActionKissSubCommand
 ];
 
 export const ActionCommand: Command = DefineCommand({
@@ -29,9 +32,6 @@ export const ActionCommand: Command = DefineCommand({
     await RunActionPatSubCommand(ctx, interaction);
     await RunActionBiteSubCommand(ctx, interaction);
     await RunSlapSubCommand(ctx, interaction);
-    interaction.reply({
-      content: "test"
-    })
-
+    await RunActionKissSubCommand(ctx, interaction);
   }
 })

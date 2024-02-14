@@ -1,10 +1,10 @@
 FROM node:20
 
-WORKDIR /os-zygote
+WORKDIR /lacy
 
 COPY package*.json ./
 
-RUN yarn 
+RUN yarn
 
 COPY  . .
 
