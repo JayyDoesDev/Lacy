@@ -3,7 +3,7 @@ import { Command, DefineCommand } from "../../DefineCommand";
 import { Context } from "../../Context";
 import { Interaction } from "discord.js";
 import { i18n } from "../../i18n/i18n";
-import { Wrap } from "../../Wrap";
+import { Wrap } from "../../Common/Wrap";
 
 export const PingCommand: Command = DefineCommand({
   command: {

@@ -4,7 +4,7 @@ import { Context } from "../../Context";
 import { ChatInputCommandInteraction } from "discord.js";
 import { Status } from "../../Api/Status";
 import { i18n } from "../../i18n/i18n";
-import { Wrap } from "../../Wrap";
+import { Wrap } from "../../Common/Wrap";
 
 export const DeleteCommand: Command = DefineCommand({
   command: {

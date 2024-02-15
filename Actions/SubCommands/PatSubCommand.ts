@@ -1,7 +1,7 @@
 import { ApplicationCommandOptionType, ApplicationCommandOptions } from "@antibot/interactions";
 import { Context } from "../../Context";
 import { ChatInputCommandInteraction } from "discord.js";
-import { Wrap, FluxResponse } from "../../Wrap";
+import { Wrap, FluxResponse } from "../../Common/Wrap";
 import { Colors } from "../../Colors";
 export const ActionPatSubCommand: ApplicationCommandOptions = {
   name: "pat",
