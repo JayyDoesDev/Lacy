@@ -1,5 +1,5 @@
 import { ApplicationCommandOptions, ApplicationCommandType } from "@antibot/interactions";
-import { Command, DefineCommand } from "../../DefineCommand";
+import { Command, DefineCommand } from "../../Common/DefineCommand";
 import { Context } from "../../Context";
 import { Colors } from "../../Colors";
 import {

@@ -1,5 +1,5 @@
 import { ApplicationCommandType } from "@antibot/interactions";
-import { Command, DefineCommand } from "../../DefineCommand";
+import { Command, DefineCommand } from "../../Common/DefineCommand";
 import { Context } from "../../Context";
 import { ButtonStyle, ComponentType, Interaction } from "discord.js";
 import { Colors } from "../../Colors";

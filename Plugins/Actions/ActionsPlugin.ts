@@ -1,4 +1,4 @@
-import { DefinePlugin, Plugin } from "../../DefinePlugin";
+import { DefinePlugin, Plugin } from "../../Common/DefinePlugin";
 import { ActionCommand } from "../../Actions";
 
 export = DefinePlugin({

@@ -1,5 +1,5 @@
 /* BETA */
-import { Command } from "./DefineCommand";
+import { Command } from "./Common/DefineCommand";
 import glob from "glob";
 import * as pt from "path"
 

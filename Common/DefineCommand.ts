@@ -1,5 +1,5 @@
 import { Interaction, PermissionsBitField } from "discord.js";
-import { Context } from "./Context";
+import { Context } from "../Context";
 import { ICommand } from "@antibot/interactions";
 
 export interface Command {

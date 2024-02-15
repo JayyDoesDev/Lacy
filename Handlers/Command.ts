@@ -1,7 +1,7 @@
 import { Context } from "../Context";
 import glob from "glob";
 import path from "path";
-import { Command } from "../DefineCommand";
+import { Command } from "../Common/DefineCommand";
 import { ICommand } from "@antibot/interactions";
 export default function (ctx: Context): Promise<void> {
   const commands: string[] = glob.sync("./dist/Plugins/**/**/*.js");

@@ -1,5 +1,5 @@
-import { Command } from "../../DefineCommand";
-import { DefinePlugin, Plugin } from "../../DefinePlugin";
+import { Command } from "../../Common/DefineCommand";
+import { DefinePlugin, Plugin } from "../../Common/DefinePlugin";
 import { HelpCommand, PingCommand } from "../../Generic";
 
 export = DefinePlugin({

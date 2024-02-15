@@ -1,8 +1,8 @@
 import { Client, Partials } from "discord.js";
 import { ZillaCollection } from "@antibot/zilla";
-import { Command } from "./DefineCommand";
+import { Command } from "./Common/DefineCommand";
 import { Interactions, Snowflake } from "@antibot/interactions";
-import { Plugin } from "./DefinePlugin";
+import { Plugin } from "./Common/DefinePlugin";
 import { Status } from "./Api/Status";
 import { FluxpointClient } from "fluxpoint-js";
 

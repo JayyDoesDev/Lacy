@@ -1,4 +1,4 @@
-import { DefinePlugin, Plugin } from "../../DefinePlugin";
+import { DefinePlugin, Plugin } from "../../Common/DefinePlugin";
 import { ProfileCommand } from "../../Profile";
 
 export = DefinePlugin({
