@@ -1,7 +1,7 @@
 import { ApplicationCommandOptions, ApplicationCommandOptionType } from "@antibot/interactions";
 import { Context } from "../../Context";
 import { ChatInputCommandInteraction, ModalBuilder, ModalSubmitInteraction, TextInputStyle } from "discord.js";
-import { Colors } from "../../Colors";
+import { Colors } from "../../Common/Colors";
 import { ActionRowBuilder, TextInputBuilder } from "@discordjs/builders";
 export const SetSubCommand: ApplicationCommandOptions = {
   name: "set",

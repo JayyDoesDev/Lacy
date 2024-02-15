@@ -1,7 +1,7 @@
 import { ApplicationCommandOptions, ApplicationCommandType } from "@antibot/interactions";
 import { Command, DefineCommand } from "../../Common/DefineCommand";
 import { Context } from "../../Context";
-import { Colors } from "../../Colors";
+import { Colors } from "../../Common/Colors";
 import {
   SetSubCommand,
   RunProfileSetSubCommand

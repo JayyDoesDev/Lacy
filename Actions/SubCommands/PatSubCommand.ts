@@ -2,7 +2,7 @@ import { ApplicationCommandOptionType, ApplicationCommandOptions } from "@antibo
 import { Context } from "../../Context";
 import { ChatInputCommandInteraction } from "discord.js";
 import { Wrap, FluxResponse } from "../../Common/Wrap";
-import { Colors } from "../../Colors";
+import { Colors } from "../../Common/Colors";
 export const ActionPatSubCommand: ApplicationCommandOptions = {
   name: "pat",
   description: "Pat your friends!",

@@ -2,7 +2,7 @@ import { ApplicationCommandOptions, ApplicationCommandType } from "@antibot/inte
 import { Command, DefineCommand } from "../../Common/DefineCommand";
 import { Context } from "../../Context";
 import { ChatInputCommandInteraction } from "discord.js";
-import { Colors } from "../../Colors";
+import { Colors } from "../../Common/Colors";
 import {
   ActionPatSubCommand,
   RunActionPatSubCommand,
