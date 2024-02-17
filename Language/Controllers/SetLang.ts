@@ -14,10 +14,7 @@ export async function SetLang(lang: string, userId: Snowflake): Promise<void> {
       }
     );
   } else {
-    await new UserSchema({
-      User: userId
-    }).save();
-
+    await new UserSchema({ User: userId }).save();
     await UserSchema.updateOne(
       {
         User: userId,

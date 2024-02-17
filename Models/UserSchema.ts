@@ -1,30 +1,47 @@
 import { Schema, Document, model } from "mongoose";
 
-interface IContents {
-  Link: string;
-  URLID: string;
-}
 interface UserDocument extends Document {
   User: string;
-  Contents: IContents[];
   Date: Date;
   Language: string;
+  Profile: {
+    Public: boolean;
+    Name: string;
+    Pronouns:  string;
+    Description: string;
+  }
 }
-const User = new Schema({
+const userSchema = new Schema({
   User: {
     type: String,
   },
-  Contents: {
-    type: Array,
-  },
   Date: {
     type: Date,
-    default: Date,
+    default: Date.now,
   },
   Language: {
     type: String,
-    default: 'en'
+    default: 'en',
+  },
+  Profile: {
+    Public: {
+      type: Boolean,
+      default: true,
+    },
+    Name: {
+      type: String,
+      default: null,
+    },
+    Pronouns: {
+      type: String,
+      default: null,
+    },
+    Description: {
+      type: String,
+      default: null,
+    }
   }
-});
+}, { versionKey: false });
+export = model<UserDocument>("users", userSchema);
 
-export = model<UserDocument>("users", User);
+

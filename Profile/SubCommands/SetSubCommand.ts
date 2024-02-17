@@ -3,7 +3,7 @@ import { Context } from "../../Context";
 import { ChatInputCommandInteraction, ModalBuilder, ModalSubmitInteraction, TextInputStyle } from "discord.js";
 import { Colors } from "../../Common/Colors";
 import { ActionRowBuilder, TextInputBuilder } from "@discordjs/builders";
-export const SetSubCommand: ApplicationCommandOptions = {
+export const ProfileSetSubCommand: ApplicationCommandOptions = {
   name: "set",
   description: "Set your pronouns and description!",
   type: ApplicationCommandOptionType.SUB_COMMAND,
@@ -21,8 +21,24 @@ export async function RunProfileSetSubCommand(ctx: Context, interaction: ChatInp
     .setStyle(TextInputStyle.Short)
     .setMaxLength(60)
     .setRequired(false);
+  const pronouns: TextInputBuilder = new TextInputBuilder()
+  .setCustomId("profile_pronouns")
+  .setLabel("What is your pronouns?")
+  .setPlaceholder("she/her")
+  .setStyle(TextInputStyle.Short)
+  .setMaxLength(15)
+  .setRequired(false);
+  const description: TextInputBuilder = new TextInputBuilder()
+  .setCustomId('profile_description')
+  .setLabel("What do you want people to know about you?")
+  .setPlaceholder("I like to play games!")
+  .setStyle(TextInputStyle.Paragraph)
+  .setMaxLength(300)
+  .setRequired(false);
   const preferredNameRow: ActionRowBuilder<TextInputBuilder> = new ActionRowBuilder<TextInputBuilder>().addComponents(preferredName);
-  modal.addComponents(preferredNameRow as any)
+  const pronounsRow: ActionRowBuilder<TextInputBuilder> = new ActionRowBuilder<TextInputBuilder>().addComponents(pronouns);
+  const descriptionRow: ActionRowBuilder<TextInputBuilder> = new ActionRowBuilder<TextInputBuilder>().addComponents(description);
+  modal.addComponents(preferredNameRow, pronounsRow, descriptionRow as any)
   if (interaction.options.getSubcommand() === "set") {
     await interaction.showModal(modal);
   }

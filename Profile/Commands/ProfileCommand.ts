@@ -3,13 +3,16 @@ import { Command, DefineCommand } from "../../Common/DefineCommand";
 import { Context } from "../../Context";
 import { Colors } from "../../Common/Colors";
 import {
-  SetSubCommand,
-  RunProfileSetSubCommand
+  ProfileSetSubCommand,
+  RunProfileSetSubCommand,
+  ProfileVisibilitySubCommand,
+  RunVisibilitySubCommand
 } from "../SubCommands";
 import { ChatInputCommandInteraction } from "discord.js";
 
 const SubCommands: ApplicationCommandOptions[] = [
-  SetSubCommand
+  ProfileSetSubCommand,
+  ProfileVisibilitySubCommand
 ];
 
 export const ProfileCommand: Command = DefineCommand({
@@ -21,5 +24,6 @@ export const ProfileCommand: Command = DefineCommand({
   },
   on: async (ctx: Context, interaction: ChatInputCommandInteraction) => {
     await RunProfileSetSubCommand(ctx, interaction);
+    await RunVisibilitySubCommand(ctx, interaction);
   }
 })

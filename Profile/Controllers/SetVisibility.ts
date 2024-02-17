@@ -2,7 +2,7 @@ import { UserExists } from "../../Common/UserExists";
 import UserSchema from "../../Models/UserSchema";
 import type { Snowflake } from "@antibot/interactions";
 
-export async function SetName(name: string, userId: Snowflake): Promise<void> {
+export async function SetVisibility(boolean: boolean, userId: Snowflake): Promise<void> {
   if (await UserExists(userId)) {
     await UserSchema.updateOne(
       {
@@ -10,7 +10,7 @@ export async function SetName(name: string, userId: Snowflake): Promise<void> {
       },
       {
         $set: {
-          "Profile.Name": name
+          "Profile.Public": boolean
          },
       }
     );
@@ -18,12 +18,12 @@ export async function SetName(name: string, userId: Snowflake): Promise<void> {
     await new UserSchema({ User: userId }).save();
     await UserSchema.updateOne(
       {
-        User: userId
+        User: userId,
       },
       {
         $set: {
-          "Profile.Name": name
-         }
+          "Profile.Public": boolean
+         },
       }
     );
   }
