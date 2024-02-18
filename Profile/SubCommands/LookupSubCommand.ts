@@ -27,9 +27,9 @@ export async function RunLookupSubCommand(ctx: Context, interaction: ChatInputCo
       Record<"Profile", Record<ProfileProperties, string | boolean | null>>
       = await GetProfile(user.id);
     const wrappedProfile = await Wrap<Record<"Profile", Record<ProfileProperties, string | boolean | null>>>(getProfile as any);
-    let name = typeof (wrappedProfile.data.Profile.Name) === "string" ? wrappedProfile.data.Profile.Name : "Not set";
-    let pronouns = typeof (wrappedProfile.data.Profile.Pronouns) === "string" ? wrappedProfile.data.Profile.Pronouns : "Not set";
-    let description = typeof (wrappedProfile.data.Profile.Description) === "string" ? wrappedProfile.data.Profile.Description : "Not set";
+    let name: string = typeof (wrappedProfile.data.Profile.Name) === "string" ? wrappedProfile.data.Profile.Name : "Not set";
+    let pronouns: string = typeof (wrappedProfile.data.Profile.Pronouns) === "string" ? wrappedProfile.data.Profile.Pronouns : "Not set";
+    let description: string = typeof (wrappedProfile.data.Profile.Description) === "string" ? wrappedProfile.data.Profile.Description : "Not set";
     if (!wrappedProfile.data.Profile.Public) {
       name = "Not set";
       pronouns = "Not set";
