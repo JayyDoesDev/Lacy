@@ -4,7 +4,7 @@ import type { Snowflake } from "@antibot/interactions";
 
 export async function GetName(userId: Snowflake): Promise<string | null> {
 	if (await UserExists(userId)) {
-		return new UserSchema({ User: userId }).Profile.Name
+		return new UserSchema({ User: userId }).Profile.Name;
 	} else {
     return null;
   }
