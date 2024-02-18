@@ -8,14 +8,17 @@ import {
   ProfileVisibilitySubCommand,
   RunVisibilitySubCommand,
   ProfileViewSubCommand,
-  RunViewSubCommand
+  RunViewSubCommand,
+  LookupSubCommand,
+  RunLookupSubCommand
 } from "../SubCommands";
 import { ChatInputCommandInteraction } from "discord.js";
 
 const SubCommands: ApplicationCommandOptions[] = [
   ProfileSetSubCommand,
   ProfileVisibilitySubCommand,
-  ProfileViewSubCommand
+  ProfileViewSubCommand,
+  LookupSubCommand
 ];
 
 export const ProfileCommand: Command = DefineCommand({
@@ -29,5 +32,6 @@ export const ProfileCommand: Command = DefineCommand({
     await RunProfileSetSubCommand(ctx, interaction);
     await RunVisibilitySubCommand(ctx, interaction);
     await RunViewSubCommand(ctx, interaction);
+    await RunLookupSubCommand(ctx, interaction);
   }
 })
