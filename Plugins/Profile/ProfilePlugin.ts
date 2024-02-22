@@ -7,4 +7,4 @@ export = DefinePlugin({
   commands: [ProfileCommand],
   events: [ProfileModal],
   public_plugin: true
-})
+}) as Plugin;

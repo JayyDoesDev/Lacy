@@ -11,7 +11,7 @@ interface UserDocument extends Document {
     Description: string;
   }
 }
-const userSchema = new Schema({
+const UserSchema = new Schema({
   User: {
     type: String,
   },
@@ -42,6 +42,6 @@ const userSchema = new Schema({
     }
   }
 }, { versionKey: false });
-export = model<UserDocument>("users", userSchema);
+export = model<UserDocument>("users", UserSchema);
 
 

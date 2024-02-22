@@ -12,8 +12,8 @@ export const ProfileSetSubCommand: ApplicationCommandOptions = {
 
 export async function RunProfileSetSubCommand(ctx: Context, interaction: ChatInputCommandInteraction): Promise<void> {
   const modal: ModalBuilder = new ModalBuilder()
-  .setCustomId(`profile_${interaction.user.id}`)
-  .setTitle("Setup Your Global Profile")
+    .setCustomId(`profile_${interaction.user.id}`)
+    .setTitle("Setup Your Global Profile")
   const preferredName: TextInputBuilder = new TextInputBuilder()
     .setCustomId('preferred_name')
     .setLabel("What is your preferred name?")
@@ -22,19 +22,19 @@ export async function RunProfileSetSubCommand(ctx: Context, interaction: ChatInp
     .setMaxLength(60)
     .setRequired(false);
   const pronouns: TextInputBuilder = new TextInputBuilder()
-  .setCustomId("profile_pronouns")
-  .setLabel("What is your pronouns?")
-  .setPlaceholder("she/her")
-  .setStyle(TextInputStyle.Short)
-  .setMaxLength(15)
-  .setRequired(false);
+    .setCustomId("profile_pronouns")
+    .setLabel("What is your pronouns?")
+    .setPlaceholder("she/her")
+    .setStyle(TextInputStyle.Short)
+    .setMaxLength(15)
+    .setRequired(false);
   const description: TextInputBuilder = new TextInputBuilder()
-  .setCustomId('profile_description')
-  .setLabel("What do you want people to know about you?")
-  .setPlaceholder("I like to play games!")
-  .setStyle(TextInputStyle.Paragraph)
-  .setMaxLength(300)
-  .setRequired(false);
+    .setCustomId('profile_description')
+    .setLabel("What do you want people to know about you?")
+    .setPlaceholder("I like to play games!")
+    .setStyle(TextInputStyle.Paragraph)
+    .setMaxLength(300)
+    .setRequired(false);
   const preferredNameRow: ActionRowBuilder<TextInputBuilder> = new ActionRowBuilder<TextInputBuilder>().addComponents(preferredName);
   const pronounsRow: ActionRowBuilder<TextInputBuilder> = new ActionRowBuilder<TextInputBuilder>().addComponents(pronouns);
   const descriptionRow: ActionRowBuilder<TextInputBuilder> = new ActionRowBuilder<TextInputBuilder>().addComponents(description);
