@@ -15,8 +15,8 @@ export const HelpCommand: Command = DefineCommand({
     if (!interaction.isCommand()) {
       return;
     }
-
-    const plugins = [];
+    type pluginProperties = "name" | "value";
+    const plugins: Record<pluginProperties, string>[] = [];
     ctx.plugin.forEach((x) => {
       if (!x.public_plugin) {
         return;
