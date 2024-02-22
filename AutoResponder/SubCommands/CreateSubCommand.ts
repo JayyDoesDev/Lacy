@@ -1,6 +1,12 @@
 import { ApplicationCommandOptions, ApplicationCommandOptionType } from "@antibot/interactions";
 import { Context } from "../../Context";
-import { ActionRowBuilder, ChatInputCommandInteraction, ModalBuilder, TextInputBuilder, TextInputStyle } from "discord.js";
+import {
+  ActionRowBuilder,
+  ChatInputCommandInteraction,
+  ModalBuilder,
+  TextInputBuilder,
+  TextInputStyle
+} from "discord.js";
 export const CreateSubCommand: ApplicationCommandOptions = {
   name: "create",
   description: "Create an auto responder!",

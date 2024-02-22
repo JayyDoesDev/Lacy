@@ -8,12 +8,15 @@ import { Command, DefineCommand } from "../../Common/DefineCommand";
 import { Context } from "../../Context";
 import {
   CreateSubCommand,
-  RunCreateSubCommand
+  RunCreateSubCommand,
+  ListSubcommand,
+  RunListSubCommand
 } from "../SubCommands/index";
 import { ChatInputCommandInteraction } from "discord.js";
 
 const SubCommands: ApplicationCommandOptions[] = [
-  CreateSubCommand
+  CreateSubCommand,
+  ListSubcommand
 ];
 
 export const AutoResponderCommand: Command = DefineCommand({
@@ -28,5 +31,6 @@ export const AutoResponderCommand: Command = DefineCommand({
   },
   on: async (ctx: Context, interaction: ChatInputCommandInteraction) => {
     await RunCreateSubCommand(ctx, interaction);
+    await RunListSubCommand(ctx, interaction);
   }
 })
