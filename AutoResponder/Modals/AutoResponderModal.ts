@@ -41,4 +41,4 @@ export const AutoResponderModal: Event = DefineEvent({
 
     }
   }
-})
+}) as Event;

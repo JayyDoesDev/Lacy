@@ -2,7 +2,7 @@ import { GuildExists } from "../../Common/GuildExists";
 import GuildSchema from "../../Models/GuildSchema";
 import type { Snowflake } from "@antibot/interactions";
 
-export async function CreateAutoResponder(name: string, response: string, guildid: string): Promise<void> {
+export async function CreateAutoResponder(name: string, response: string, guildid: Snowflake): Promise<void> {
   if (await GuildExists(guildid)) {
     await GuildSchema.updateOne(
       {

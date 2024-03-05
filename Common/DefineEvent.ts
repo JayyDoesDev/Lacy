@@ -6,7 +6,7 @@ export interface Event {
     name: string;
     once: boolean;
   };
-  on: (Event: Interaction, ctx: Context) => void;
+  on: (Event: Interaction | any, ctx: Context) => void;
 }
 
 export function DefineEvent(options: Event): Event {

@@ -9,7 +9,7 @@ export async function i18n(userId: Snowflake, translate: string): Promise<string
     const keys: string[] = translate.split(".");
     let translation = language;
     for (const properties of keys) {
-      if (translation.hasOwnProperty(properties)) {
+      if (Object.prototype.hasOwnProperty.call(translation, properties)) {
         translation = translation[properties]
       }
     }
@@ -19,7 +19,7 @@ export async function i18n(userId: Snowflake, translate: string): Promise<string
     const keys: string[] = translate.split(".");
     let translation = language;
     for (const properties of keys) {
-      if (translation.hasOwnProperty(properties)) {
+      if (Object.prototype.hasOwnProperty.call(translation, properties)) {
         translation = translation[properties]
       }
     }

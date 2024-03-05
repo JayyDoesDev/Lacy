@@ -1,4 +1,4 @@
-import { Client, Partials } from "discord.js";
+import { Client, Partials, IntentsBitField } from "discord.js";
 import { ZillaCollection } from "@antibot/zilla";
 import { Command } from "./Common/DefineCommand";
 import { Interactions, Snowflake } from "@antibot/interactions";
@@ -19,7 +19,12 @@ export class Context extends Client {
   }
   constructor() {
     super({
-      intents: [],
+      intents: [
+        IntentsBitField.Flags.MessageContent,
+        IntentsBitField.Flags.Guilds,
+        IntentsBitField.Flags.GuildMembers,
+        IntentsBitField.Flags.GuildMessages
+      ],
       partials: [
         Partials.Channel,
         Partials.GuildMember,
