@@ -20,8 +20,6 @@ interface GuildDocument extends Document {
   Tags: Tags[];
 }
 
-
-
 const GuildSchema = new Schema({
   Guild: {
     type: String
