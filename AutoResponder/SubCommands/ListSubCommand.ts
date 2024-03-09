@@ -17,8 +17,9 @@ export async function RunListSubCommand(ctx: Context, interaction: ChatInputComm
     const wrappedGuild = await Wrap(GuildSchema.findOne({ Guild: interaction.guild.id }));
     await GuildExists(interaction.guild.id)
       ? interaction.reply({
-        content: `> Here are your server auto responders!\n \`\`\`${wrappedGuild.data.AutoResponders.map((e, i) => `${i + 1}. Name: ${e.AutoResponderName}\n Response: ${e.AutoResponderResponse}\n Creation Date: ${moment(e.Date).format("MMMM Do YYYY")}\n--------------------------`).join("\n") || "> No auto responders found!"}\`\`\``
+        content: `> Here are your server auto responders!\n \`\`\`${wrappedGuild.data.AutoResponders.map((e, i) => `${i + 1}. Name: ${e.AutoResponderName}\n Response: ${e.AutoResponderResponse}\n Creation Date: ${moment(e.Date).format("MMMM Do YYYY")}\n--------------------------`).join("\n") || "> No auto responders found!"}\`\`\``,
+        ephemeral: true
       })
-      : interaction.reply({ content: "> No auto responders found!" });
+      : interaction.reply({ content: "> No auto responders found!", ephemeral: true });
   }
 }

@@ -1,16 +1,6 @@
-import { Schema, Document, model } from "mongoose";
+import { Schema, model } from "mongoose";
+import { UserDocument } from "./UserDocument";
 
-interface UserDocument extends Document {
-  User: string;
-  Date: Date;
-  Language: string;
-  Profile: {
-    Public: boolean;
-    Name: string;
-    Pronouns:  string;
-    Description: string;
-  }
-}
 const UserSchema = new Schema({
   User: {
     type: String,
