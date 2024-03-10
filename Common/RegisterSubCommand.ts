@@ -1,6 +1,6 @@
 import { Context } from "../Context";
 interface RegisterSubCommandOptions {
-  subCommand: string,
+  subCommand: string;
   ctx: Context;
   interaction;
   callback: Function;
