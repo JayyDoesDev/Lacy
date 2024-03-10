@@ -5,7 +5,7 @@ import { CreateAutoResponder } from "../Controllers/CreateAutoResponder";
 import { AutoResponderExists } from "../Controllers/AutoResponderExists";
 import { Emojis } from "../../Common/Emojis";
 import { Colors } from "../../Common/Colors";
-import { RegisterInteractionById } from "../../Common/RegisterById";
+import { RegisterInteractionById } from "../../Common/RegisterInteractionById";
 export const AutoResponderModal: Event = DefineEvent({
   event: {
     name: "interactionCreate",

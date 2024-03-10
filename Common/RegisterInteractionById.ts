@@ -6,7 +6,7 @@ interface RegisterByIdOptions {
   condition?: string;
   callback: Function;
 }
-export function RegisterById(options: RegisterByIdOptions): void {
+export function RegisterInteractionById(options: RegisterByIdOptions): void {
   if (options.condition) {
     if (!options.interaction[options.condition]()) {
       return;

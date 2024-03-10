@@ -8,7 +8,7 @@ import { RightArrowStringConfig } from "../../Common/RightArrowStringConfig";
 import { Emojis } from "../../Common/Emojis";
 import { Colors } from "../../Common/Colors";
 import UserSchema from "../../Models/UserSchema";
-import { RegisterInteractionById } from "../../Common/RegisterById";
+import { RegisterInteractionById } from "../../Common/RegisterInteractionById";
 
 export const ProfileModal: Event = DefineEvent({
   event: {
