@@ -21,7 +21,7 @@ export const LookupSubCommand: ApplicationCommandOptions = {
   ]
 } as ApplicationCommandOptions;
 
-export async function RunLookupSubCommand(ctx: Context, interaction: ChatInputCommandInteraction): Promise<void> {
+export function RunLookupSubCommand(ctx: Context, interaction: ChatInputCommandInteraction): void {
   RegisterSubCommand({
     subCommand: "lookup",
     ctx: ctx,
