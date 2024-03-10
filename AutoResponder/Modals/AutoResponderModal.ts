@@ -16,7 +16,9 @@ export const AutoResponderModal: Event = DefineEvent({
       id: `create_auto_responder_${interaction.user.id}`,
       ctx: ctx,
       interaction: interaction,
-      condition: "isModalSubmit",
+      typeguards: {
+        negativeTypeGuards: ["isModalSubmit"]
+      },
       callback: async (ctx: Context, interaction: ModalSubmitInteraction) => {
         const autoResponderName: string = interaction.fields.getTextInputValue("auto_responder_name");
         const autoResponderResponse: string = interaction.fields.getTextInputValue("auto_responder_response");

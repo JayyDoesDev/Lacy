@@ -20,7 +20,9 @@ export const ProfileModal: Event = DefineEvent({
       id: `profile_${interaction.user.id}`,
       ctx: ctx,
       interaction: interaction,
-      condition: "isModalSubmit",
+      typeguards: {
+        negativeTypeGuards: ["isModalSubmit"]
+      },
       callback: async (ctx: Context, interaction: ModalSubmitInteraction) => {
         const preferredName: string = interaction.fields.getTextInputValue("preferred_name");
         const pronouns: string = interaction.fields.getTextInputValue("profile_pronouns");
