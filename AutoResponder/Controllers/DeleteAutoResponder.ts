@@ -4,8 +4,8 @@ import { AutoResponderExists } from "./AutoResponderExists";
 import { Wrap } from "../../Common/Wrap";
 import { AutoResponders } from "../../Models/GuildDocument";
 
-export async function GetAutoResponder(name: string, guildId: Snowflake):
-  Promise<{ AutoResponderName: string, AutoResponderResponse: string, Date: Date } | { Response: string }> {
+export async function DeleteAutoResponder(name: string, guildId: Snowflake):
+  Promise<{ Response: string | boolean }> {
   if (await AutoResponderExists(guildId, name)) {
     const wrappedGuild = await Wrap(GuildSchema.findOne({ Guild: guildId }));
     const autoResponder = wrappedGuild.data
@@ -13,11 +13,16 @@ export async function GetAutoResponder(name: string, guildId: Snowflake):
         return e.AutoResponderName === name;
       });
     if (autoResponder) {
-      return {
-        AutoResponderName: autoResponder.AutoResponderName as string,
-        AutoResponderResponse: autoResponder.AutoResponderResponse as string,
-        Date: autoResponder.Date
-      };
+      wrappedGuild.data.updateOne(
+        {
+          Guild: guildId
+        },
+        {
+          $pull: {
+            "AutoResponders": { AutoResponder: name }
+          }
+        }
+      )
     } else {
       return {
         Response: "Not Found"

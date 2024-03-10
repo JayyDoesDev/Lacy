@@ -3,7 +3,7 @@ import { Wrap } from "../../Common/Wrap";
 import type { Snowflake } from "@antibot/interactions";
 import GuildSchema from "../../Models/GuildSchema";
 import { Model, Document } from "mongoose";
-import { Tags } from "../../Models/GuildDocument";
+import { GuildDocument, Tags } from "../../Models/GuildDocument";
 export async function TagExists(guildId: Snowflake, name: string): Promise<boolean> {
   if (await GuildExists(guildId)) {
     const wrappedGuild = await Wrap(GuildSchema.findOne({ Guild: guildId }));
@@ -13,4 +13,4 @@ export async function TagExists(guildId: Snowflake, name: string): Promise<boole
       }) ? true : false;
   };
   return false;
-}
+};
