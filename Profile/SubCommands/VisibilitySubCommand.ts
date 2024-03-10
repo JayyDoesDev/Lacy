@@ -5,6 +5,7 @@ import { SetVisibility } from "../Controllers/SetVisibility";
 import { RightArrowStringConfig } from "../../Common/RightArrowStringConfig";
 import { Emojis } from "../../Common/Emojis";
 import { Colors } from "../../Common/Colors";
+import { RegisterSubCommand } from "../../Common/RegisterSubCommand";
 
 export const ProfileVisibilitySubCommand: ApplicationCommandOptions = {
   name: "visibility",
@@ -20,24 +21,29 @@ export const ProfileVisibilitySubCommand: ApplicationCommandOptions = {
   ]
 } as ApplicationCommandOptions;
 
-export async function RunVisibilitySubCommand(ctx: Context, interaction: ChatInputCommandInteraction): Promise<void> {
-  if (interaction.options.getSubcommand() === "visibility") {
-    const getvisible: boolean = interaction.options.getBoolean("visible");
-    await SetVisibility(getvisible, interaction.user.id);
-    return interaction.reply({
-      content: `> Your profile visibility has been set to ${getvisible}! Use \`/profile view\` to view your profile!`,
-      embeds: [
-        {
-          title: ":bust_in_silhouette: Profile Config",
-          color: Colors.Yellow,
-          description: RightArrowStringConfig(getvisible ? Emojis.CHECK_MARK : Emojis.CROSS_MARK, "Profile Visibility"),
-          footer: {
-            text: "Lacy • lacy.weeb.ws",
-            icon_url: ctx.user.avatarURL()
+export function RunVisibilitySubCommand(ctx: Context, interaction: ChatInputCommandInteraction): void {
+  RegisterSubCommand({
+    subCommand: "visibility",
+    ctx: ctx,
+    interaction: interaction,
+    callback: async (ctx: Context, interaction: ChatInputCommandInteraction) => {
+      const getvisible: boolean = interaction.options.getBoolean("visible");
+      await SetVisibility(getvisible, interaction.user.id);
+      return interaction.reply({
+        content: `> Your profile visibility has been set to ${getvisible}! Use \`/profile view\` to view your profile!`,
+        embeds: [
+          {
+            title: ":bust_in_silhouette: Profile Config",
+            color: Colors.Yellow,
+            description: RightArrowStringConfig(getvisible ? Emojis.CHECK_MARK : Emojis.CROSS_MARK, "Profile Visibility"),
+            footer: {
+              text: "Lacy • lacy.weeb.ws",
+              icon_url: ctx.user.avatarURL()
+            }
           }
-        }
-      ],
-      ephemeral: true
-    }) as any;
-  }
+        ],
+        ephemeral: true
+      }) as any;
+    }
+  })
 }

@@ -3,7 +3,7 @@ interface RegisterSubCommandOptions {
   subCommand: string,
   ctx: Context;
   interaction;
-  callback: Function
+  callback: Function;
 }
 export function RegisterSubCommand(options: RegisterSubCommandOptions): void {
   if (options.interaction.options.getSubcommand() === options.subCommand) {
