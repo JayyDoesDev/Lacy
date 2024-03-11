@@ -1,7 +1,7 @@
 import { ApplicationCommandOptionType, ApplicationCommandOptions } from "@antibot/interactions";
 import { Context } from "../../Context";
 import { ChatInputCommandInteraction } from "discord.js";
-import { GetProfile, ProfileProperties } from "../Controllers/GetProfile";
+import { GetProfile, ProfileProperties, ProfileReturnType } from "../Controllers/GetProfile";
 import { RightArrowStringConfig } from "../../Common/RightArrowStringConfig";
 import { Emojis } from "../../Common/Emojis";
 import { Colors } from "../../Common/Colors";
@@ -21,10 +21,8 @@ export function RunViewSubCommand(ctx: Context, interaction: ChatInputCommandInt
     ctx: ctx,
     interaction: interaction,
     callback: async (ctx: Context, interaction: ChatInputCommandInteraction) => {
-      const getProfile:
-        Record<"Profile", Record<ProfileProperties, string | boolean | null>>
-        = await GetProfile(interaction.user.id);
-      const wrappedProfile = await Wrap<Record<"Profile", Record<ProfileProperties, string | boolean | null>>>(getProfile as any);
+      const getProfile: ProfileReturnType<string> = await GetProfile(interaction.user.id);
+      const wrappedProfile = await Wrap<ProfileReturnType<string>>(getProfile as any);
       return interaction.reply({
         content: "> Here is your global profile!",
         embeds: [

@@ -3,7 +3,17 @@ import UserSchema from "../../Models/UserSchema";
 import type { Snowflake } from "@antibot/interactions";
 
 export type ProfileProperties = "Public" | "Name" | "Pronouns" | "Description";
-export async function GetProfile(userId: Snowflake): Promise<Record<"Profile", Record<ProfileProperties, string | boolean | null>>> {
+
+export type ProfileReturnType<T> = {
+  Profile: Record<ProfileProperties, T>;
+};
+
+export async function GetProfile(userId: Snowflake): Promise<ProfileReturnType<string>>;
+export async function GetProfile(userId: Snowflake): Promise<ProfileReturnType<boolean>>;
+export async function GetProfile(userId: Snowflake): Promise<ProfileReturnType<null>>;
+export async function GetProfile<T>(
+  userId: Snowflake
+): Promise<ProfileReturnType<T>> {
   if (await UserExists(userId)) {
     const data = await UserSchema.findOne({ User: userId });
     return {
@@ -11,17 +21,17 @@ export async function GetProfile(userId: Snowflake): Promise<Record<"Profile", R
         Public: data.Profile.Public,
         Name: data.Profile.Name,
         Pronouns: data.Profile.Pronouns,
-        Description: data.Profile.Description
-      }
-    };
+        Description: data.Profile.Description,
+      },
+    } as ProfileReturnType<T>;
   } else {
     return {
       Profile: {
         Public: true,
         Name: null,
         Pronouns: null,
-        Description: null
-      }
-    };
+        Description: null,
+      },
+    } as ProfileReturnType<T>;
   }
 }

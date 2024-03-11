@@ -1,7 +1,7 @@
 import { ApplicationCommandOptionType, ApplicationCommandOptions } from "@antibot/interactions";
 import { Context } from "../../Context";
 import { ChatInputCommandInteraction, Options } from "discord.js";
-import { GetProfile, ProfileProperties } from "../Controllers/GetProfile";
+import { GetProfile, ProfileReturnType } from "../Controllers/GetProfile";
 import { Emojis } from "../../Common/Emojis";
 import { Colors } from "../../Common/Colors";
 import { Wrap } from "../../Common/Wrap";
@@ -28,10 +28,8 @@ export function RunLookupSubCommand(ctx: Context, interaction: ChatInputCommandI
     interaction: interaction,
     callback: async (ctx: Context, interaction: ChatInputCommandInteraction) => {
       const user = interaction.options.getUser("user");
-      const getProfile:
-        Record<"Profile", Record<ProfileProperties, string | boolean | null>>
-        = await GetProfile(user.id);
-      const wrappedProfile = await Wrap<Record<"Profile", Record<ProfileProperties, string | boolean | null>>>(getProfile as any);
+      const getProfile: ProfileReturnType<string> = await GetProfile(interaction.user.id);
+      const wrappedProfile = await Wrap<ProfileReturnType<string>>(getProfile as any);
       let name: string = typeof (wrappedProfile.data.Profile.Name) === "string" ? wrappedProfile.data.Profile.Name : "Not set";
       let pronouns: string = typeof (wrappedProfile.data.Profile.Pronouns) === "string" ? wrappedProfile.data.Profile.Pronouns : "Not set";
       let description: string = typeof (wrappedProfile.data.Profile.Description) === "string" ? wrappedProfile.data.Profile.Description : "Not set";
