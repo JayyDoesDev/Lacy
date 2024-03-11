@@ -3,9 +3,11 @@ import GuildSchema from "../../Models/GuildSchema";
 import { AutoResponderExists } from "./AutoResponderExists";
 import { Wrap } from "../../Common/Wrap";
 import { AutoResponders } from "../../Models/GuildDocument";
-
-export async function DeleteAutoResponder(name: string, guildId: Snowflake):
-  Promise<{ Response: string | boolean }> {
+export type DeleteAutoResponderStringType = Promise<{ Response: string }>;
+export type DeleteAutoResponderBooleanType = Promise<{ Response: boolean }>;
+export async function DeleteAutoResponder(name: string, guildId: Snowflake): DeleteAutoResponderStringType;
+export async function DeleteAutoResponder(name: string, guildId: Snowflake): DeleteAutoResponderBooleanType;
+export async function DeleteAutoResponder<T>(name: string, guildId: Snowflake): Promise<T> {
   if (await AutoResponderExists(guildId, name)) {
     const wrappedGuild = await Wrap(GuildSchema.findOne({ Guild: guildId }));
     const autoResponder = wrappedGuild.data
@@ -26,11 +28,11 @@ export async function DeleteAutoResponder(name: string, guildId: Snowflake):
     } else {
       return {
         Response: "Not Found"
-      };
+      } as T;
     }
   } else {
     return {
       Response: "Not Found"
-    };
+    } as T;
   }
 }
