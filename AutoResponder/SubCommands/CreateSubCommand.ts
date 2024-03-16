@@ -23,7 +23,7 @@ export function RunCreateSubCommand(ctx: Context, interaction: ChatInputCommandI
     callback: async (ctx: Context, interaction: ChatInputCommandInteraction) => {
       const modal: ModalBuilder = new ModalBuilder()
         .setCustomId(`create_auto_responder_${interaction.user.id}`)
-        .setTitle("Create an Auto Responder!")
+        .setTitle("Create an Auto Responder!");
       const autoResponderName: TextInputBuilder = new TextInputBuilder()
         .setCustomId("auto_responder_name")
         .setLabel("What should Lacy respond to?")

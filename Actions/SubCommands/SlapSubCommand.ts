@@ -3,6 +3,7 @@ import { Context } from "../../Context";
 import { ChatInputCommandInteraction, Interaction } from "discord.js";
 import { Wrap, FluxResponse } from "../../Common/Wrap";
 import { Colors } from "../../Common/Colors";
+import { RegisterSubCommand } from "../../Common/RegisterSubCommand";
 
 export const ActionSlapSubCommand: ApplicationCommandOptions = {
   name: "slap",
@@ -19,23 +20,28 @@ export const ActionSlapSubCommand: ApplicationCommandOptions = {
 } as ApplicationCommandOptions;
 
 export async function RunSlapSubCommand(ctx: Context, interaction: ChatInputCommandInteraction): Promise<void> {
-  if (interaction.options.getSubcommand() === "slap") {
-    const user = interaction.options.getUser("user");
-    const wrapped = await Wrap<FluxResponse>(ctx.flux.sfw.gifs.getSlap() as any)
-    interaction.reply({
-      embeds: [
-        {
-          description: `**${interaction.user.username}** has slapped **${user.username}**! ( ｡ •̀ ᴖ •́ ｡)`,
-          image: {
-            url: wrapped.data.file,
-          },
-          color: Colors.Scarlet,
-          footer: {
-            icon_url: "https://fluxpoint.dev/img/icons/fluxpoint.png",
-            text: "Powered by https://fluxpoint.dev"
+  RegisterSubCommand({
+    subCommand: "slap",
+    ctx: ctx,
+    interaction: interaction,
+    callback: async (ctx: Context, interaction: ChatInputCommandInteraction) => {
+      const user = interaction.options.getUser("user");
+      const wrapped = await Wrap<FluxResponse>(ctx.flux.sfw.gifs.getSlap() as any)
+      interaction.reply({
+        embeds: [
+          {
+            description: `**${interaction.user.username}** has slapped **${user.username}**! ( ｡ •̀ ᴖ •́ ｡)`,
+            image: {
+              url: wrapped.data.file,
+            },
+            color: Colors.Scarlet,
+            footer: {
+              icon_url: "https://fluxpoint.dev/img/icons/fluxpoint.png",
+              text: "Powered by https://fluxpoint.dev"
+            }
           }
-        }
-      ]
-    })
-  }
+        ]
+      })
+    }
+  })
 }
